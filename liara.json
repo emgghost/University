@@ -1,0 +1,13 @@
+{
+  "netcore": {
+    "version": "7.0"
+  },
+  "disks": [
+    {
+      "name": "taxfiles",
+      "mountTo": "TaxFiles"
+    }
+  ],
+  "app": "irtaxapi",
+  "port": 80
+}

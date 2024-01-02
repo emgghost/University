@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>IRTaxApi.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dtos\Invoice\Edit\**" />
+    <Compile Remove="Dtos\Invoice\Return\**" />
+    <EmbeddedResource Remove="Dtos\Invoice\Edit\**" />
+    <EmbeddedResource Remove="Dtos\Invoice\Return\**" />
+    <None Remove="Dtos\Invoice\Edit\**" />
+    <None Remove="Dtos\Invoice\Return\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\InvoiceBodyServices.cs" />
+    <Compile Remove="Services\InvoiceHeaderServices.cs" />
+    <Compile Remove="Services\InvoicePaymentServices.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.9" />
+    <PackageReference Include="Sarin.UI" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\University.Data\University.Data.csproj" />
+<!--    <ProjectReference Include="..\IRTaxApi.Report\IRTaxApi.Report.csproj" />
+    <ProjectReference Include="..\IRTaxApiWrapper\IRTaxApiWrapper.csproj" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Intefaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="Validation\" />
+  </ItemGroup>
+
+</Project>
