@@ -8,7 +8,6 @@ using University.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
-builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -47,7 +46,7 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-builder.Services.AddDbContext<IRTaxApiDbContext>(options =>
+builder.Services.AddDbContext<UniversityDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
@@ -108,8 +107,6 @@ var app = builder.Build();
         c.DocumentTitle = "IR Tax API Documentation";
     });
 }
-app.UseHttpsRedirection();
-
 app.UseRouting();
 //app.UseAuthentication();
 app.UseAuthorization();
@@ -122,7 +119,7 @@ app.UseEndpoints(endpoints =>
 // Enable Auto migration
 using (var serviceScope = app.Services.CreateScope())
 {
-    var dbContext = serviceScope.ServiceProvider.GetRequiredService<IRTaxApiDbContext>();
+    var dbContext = serviceScope.ServiceProvider.GetRequiredService<UniversityDbContext>();
     dbContext.Database.Migrate();
 }
 

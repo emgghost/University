@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IRTaxApi.Data.Contexts
 {
-    public class IRTaxApiDbContext : DbContext
+    public class UniversityDbContext : DbContext
     {
-        public IRTaxApiDbContext(DbContextOptions<IRTaxApiDbContext> options) : base(options)
+        public UniversityDbContext(DbContextOptions<UniversityDbContext> options) : base(options)
         {
             
         }
@@ -21,5 +21,10 @@ namespace IRTaxApi.Data.Contexts
         public DbSet<Grade> Grades { get; set; }
 
         public DbSet<Student> Students { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }
